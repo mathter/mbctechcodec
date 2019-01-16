@@ -60,7 +60,9 @@ class MqiFile(ctx: Context = new Context) extends DocumentPart {
   }
 
   def parameters(): Array[Parameter] = {
-    null
+    this.machineElement().map(_.getByType[ElementPart].filter(_.name == "para").foldLeft(new ArrayBuffer[Parameter])((a, e) => {
+      a += Parameter(e.attribute("name"), e.attribute("unit"), e.attribute("target"), e.attribute("limit"))
+    })).getOrElse(new ArrayBuffer[Parameter]).toArray
   }
 
   private def mqfileElement(): Option[ElementPart] = {

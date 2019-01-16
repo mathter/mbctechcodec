@@ -93,4 +93,20 @@ public class MqiTranslatorTest {
         mqiFile.machineNames(new String[0]);
         Assert.assertEquals(new String[0], mqiFile.machineNames());
     }
+
+    @Test
+    public void testParameters() throws Exception {
+
+        InputStream is = MqiTranslatorTest.class.getResourceAsStream("BC1901BH.mqi");
+        MqiFile mqiFile = new MqiTranslator().translate(new InputStreamSource(is, new URI("urn:local")), new MqiFileDestination());
+
+        Assert.assertNotNull(mqiFile.parameters());
+        Assert.assertEquals(23, mqiFile.parameters().length);
+
+        Parameter parameter = mqiFile.parameters()[0];
+        Assert.assertEquals("wbc", parameter.name());
+        Assert.assertEquals("10^9/L", parameter.unit());
+        Assert.assertEquals("17.80", parameter.target());
+        Assert.assertEquals("2.50", parameter.limit());
+    }
 }
