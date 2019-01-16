@@ -18,7 +18,7 @@ public class MqiTranslatorTest {
     }
 
     @Test
-    public void testLoadVersion() throws Exception {
+    public void testVersion() throws Exception {
         InputStream is = MqiTranslatorTest.class.getResourceAsStream("BC1901BH.mqi");
         MqiFile mqiFile = new MqiTranslator().translate(new InputStreamSource(is, new URI("urn:local")), new MqiFileDestination());
 
@@ -30,7 +30,7 @@ public class MqiTranslatorTest {
     }
 
     @Test
-    public void testLoadDatatype() throws Exception {
+    public void testDatatype() throws Exception {
         InputStream is = MqiTranslatorTest.class.getResourceAsStream("BC1901BH.mqi");
         MqiFile mqiFile = new MqiTranslator().translate(new InputStreamSource(is, new URI("urn:local")), new MqiFileDestination());
 
@@ -42,7 +42,7 @@ public class MqiTranslatorTest {
     }
 
     @Test
-    public void testLoadLot() throws Exception {
+    public void testLot() throws Exception {
         InputStream is = MqiTranslatorTest.class.getResourceAsStream("BC1901BH.mqi");
         MqiFile mqiFile = new MqiTranslator().translate(new InputStreamSource(is, new URI("urn:local")), new MqiFileDestination());
 
@@ -54,7 +54,7 @@ public class MqiTranslatorTest {
     }
 
     @Test
-    public void testLoadValiddate() throws Exception {
+    public void testValiddate() throws Exception {
         InputStream is = MqiTranslatorTest.class.getResourceAsStream("BC1901BH.mqi");
         MqiFile mqiFile = new MqiTranslator().translate(new InputStreamSource(is, new URI("urn:local")), new MqiFileDestination());
 
@@ -63,5 +63,34 @@ public class MqiTranslatorTest {
 
         mqiFile.validdate("2.0");
         Assert.assertEquals("2.0", mqiFile.validdate());
+    }
+
+    @Test
+    public void testLevel() throws Exception {
+        InputStream is = MqiTranslatorTest.class.getResourceAsStream("BC1901BH.mqi");
+        MqiFile mqiFile = new MqiTranslator().translate(new InputStreamSource(is, new URI("urn:local")), new MqiFileDestination());
+
+        Assert.assertNotNull(mqiFile);
+        Assert.assertEquals("H", mqiFile.level());
+
+        mqiFile.level("2.0");
+        Assert.assertEquals("2.0", mqiFile.level());
+    }
+
+    @Test
+    public void testMachineNames() throws Exception {
+        InputStream is = MqiTranslatorTest.class.getResourceAsStream("BC1901BH.mqi");
+        MqiFile mqiFile = new MqiTranslator().translate(new InputStreamSource(is, new URI("urn:local")), new MqiFileDestination());
+
+        Assert.assertEquals(new String[]{"BC-5300", "BC-5100"}, mqiFile.machineNames());
+
+        mqiFile.machineNames(new String[]{"BC-5300", "BC-5100"});
+        Assert.assertEquals(new String[]{"BC-5300", "BC-5100"}, mqiFile.machineNames());
+
+        mqiFile.machineNames(null);
+        Assert.assertEquals(new String[0], mqiFile.machineNames());
+
+        mqiFile.machineNames(new String[0]);
+        Assert.assertEquals(new String[0], mqiFile.machineNames());
     }
 }
