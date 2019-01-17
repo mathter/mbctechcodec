@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="488.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="biz.ostw.mbctechnology.codec.ui.Main">
+    <children>
+        <VBox alignment="TOP_CENTER" layoutX="72.0" layoutY="72.0" style="-fx-background-color: #fcffea;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <MenuBar fx:id="menuBar">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                            <items>
+                                <MenuItem fx:id="fileOpenMenuItem" mnemonicParsing="false" text="Открыть mqi файл" />
+                                <MenuItem fx:id="fileSaveAsMenuItem" mnemonicParsing="false" text="Save as ..." />
+                                <MenuItem fx:id="closeMenuItem" mnemonicParsing="false" text="Close" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                            <items>
+                                <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" text="About" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            <Pane VBox.vgrow="ALWAYS">
+               <children>
+                      <SplitPane fx:id="splitPane" depthTest="DISABLE" dividerPositions="0.2" nodeOrientation="LEFT_TO_RIGHT" orientation="VERTICAL">
+                          <items>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TableView fx:id="systemPropertyTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                  <TableColumn fx:id="systemPropertyNameColumn" prefWidth="75.0" text="Параметр" />
+                                  <TableColumn fx:id="systemPropertyValueColumn" prefWidth="75.0" text="Величина" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                                      <TableView fx:id="parameterTableView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <columns>
+                                              <TableColumn fx:id="parameterNameTableColumn" prefWidth="145.0" text="Параметр (name)" />
+                                              <TableColumn fx:id="parameterUnitTableColumn" prefWidth="230.0" text="Еденица измерения (unit)" />
+                                              <TableColumn fx:id="parameterTargetTableColumn" prefWidth="154.0" text="Величина (target)" />
+                                              <TableColumn fx:id="parameterLimitTableColumn" minWidth="5.0" prefWidth="192.0" text="Отклонение (limit)" />
+                                          </columns>
+                                      </TableView>
+                           </children>
+                              </AnchorPane>
+                          </items>
+                      </SplitPane>
+               </children>
+            </Pane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

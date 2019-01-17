@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<izpack:shortcuts version="5.0"
+                  xmlns:izpack="http://izpack.org/schema/shortcuts"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://izpack.org/schema/shortcuts http://izpack.org/schema/5.0/izpack-shortcuts-5.0.xsd">
+
+    <skipIfNotSupported/>
+    <programGroup defaultName="${app.name}" location="applications"/>
+    <shortcut name="${app.name}" target="$INSTALL_PATH\all.jar"
+              workingDirectory="$INSTALL_PATH" iconFile="$INSTALL_PATH\main_32x32.ico"
+              iconIndex="0" programGroup="no" desktop="yes" applications="yes"
+              startMenu="yes" startup="false">
+        <os family="windows"/>
+    </shortcut>
+</izpack:shortcuts>
